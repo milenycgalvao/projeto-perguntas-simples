@@ -19,7 +19,6 @@ class _PerguntaAppState extends State<PerguntaApp> {
     setState(() {
       _perguntaSelecionada++;
     });
-    //print(_perguntaSelecionada);
     print('respondida!');
   }
 
@@ -43,20 +42,8 @@ class _PerguntaAppState extends State<PerguntaApp> {
 
     List<Widget> respostas = [];
 
-    /*ESSA PARTE FAZ A MESMA COISA QUE O FOR ABAIXO DESSE
-    String textoResp;
-    for (int i = 0;
-        i < perguntas[_perguntaSelecionada].cast()['respostas'].length;
-        i++) {
-      //print(i);
-      //print(perguntas[_perguntaSelecionada].cast()['respostas'][i]);
-      textoResp = perguntas[_perguntaSelecionada].cast()['respostas'][i];
-      respostas.add(Resposta(textoResp, _responder));
-    }*/
-
     for (String textoResp
         in perguntas[_perguntaSelecionada].cast()['respostas']) {
-      //print(textoResp);
       respostas.add(Resposta(textoResp, _responder));
     }
 
@@ -68,9 +55,6 @@ class _PerguntaAppState extends State<PerguntaApp> {
         body: Column(
           children: [
             Questao(perguntas[_perguntaSelecionada]['texto'].toString()),
-            /*Resposta('Resposta 1', _responder),
-            Resposta('Resposta 2', _responder),
-            Resposta('Resposta 3', _responder),*/
             ...respostas,
           ],
         ),
