@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:projeto_perguntas/src/questao.dart';
 import 'package:projeto_perguntas/src/resposta.dart';
+import 'package:projeto_perguntas/src/resultado.dart';
 
 main() {
   runApp(PerguntaApp());
@@ -65,12 +66,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
                       .toList(),
                 ],
               )
-            : Center(
-                child: Text(
-                  'Para béns! :)',
-                  style: TextStyle(fontSize: 28),
-                ),
-              ),
+            : Resultado(),
       ),
     );
   }
