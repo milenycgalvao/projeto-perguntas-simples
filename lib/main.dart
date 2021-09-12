@@ -47,10 +47,6 @@ class _PerguntaAppState extends State<PerguntaApp> {
   final perguntas = ['Como é o seu nome?', 'Qual é a sua cor favorita?'];
   @override
   Widget build(BuildContext context) {
-    List<String> respostas = temPerguntaSelecionada
-        ? _perguntas[_perguntaSelecionada].cast()['respostas']
-        : [];
-
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -58,7 +54,9 @@ class _PerguntaAppState extends State<PerguntaApp> {
         ),
         body: temPerguntaSelecionada
             ? Questionario(
-                _perguntas, _perguntaSelecionada, respostas, _responder)
+                perguntas: _perguntas,
+                perguntaSelecionada: _perguntaSelecionada,
+                responder: _responder)
             : Resultado(),
       ),
     );

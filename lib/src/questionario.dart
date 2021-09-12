@@ -3,20 +3,29 @@ import 'package:projeto_perguntas/src/questao.dart';
 import 'package:projeto_perguntas/src/resposta.dart';
 
 class Questionario extends StatelessWidget {
-  final void Function() _responder;
-  final List<String> respostas;
-  final List<Map<String, Object>> _perguntas; //
-  final int _perguntaSelecionada;
+  final void Function() responder;
+  final List<Map<String, Object>> perguntas;
+  final int perguntaSelecionada;
 
-  Questionario(this._perguntas, this._perguntaSelecionada, this.respostas,
-      this._responder);
+  Questionario(
+      {required this.perguntas, //ele vai exigir que seja passado para poder chamar
+      required this.perguntaSelecionada,
+      required this.responder});
+
+  bool get temPerguntaSelecionada {
+    return perguntaSelecionada < perguntas.length;
+  }
 
   @override
   Widget build(BuildContext context) {
+    List<String> respostas = temPerguntaSelecionada
+        ? perguntas[perguntaSelecionada].cast()['respostas']
+        : [];
+
     return Column(
       children: [
-        Questao(_perguntas[_perguntaSelecionada]['texto'].toString()),
-        ...respostas.map((text) => Resposta(text, _responder)).toList(),
+        Questao(perguntas[perguntaSelecionada]['texto'].toString()),
+        ...respostas.map((text) => Resposta(text, responder)).toList(),
       ],
     );
   }
