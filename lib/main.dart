@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:projeto_perguntas/src/questao.dart';
-import 'package:projeto_perguntas/src/resposta.dart';
+import 'package:projeto_perguntas/src/questionario.dart';
 import 'package:projeto_perguntas/src/resultado.dart';
 
 main() {
@@ -58,14 +57,8 @@ class _PerguntaAppState extends State<PerguntaApp> {
           title: Text('Perguntas'),
         ),
         body: temPerguntaSelecionada
-            ? Column(
-                children: [
-                  Questao(_perguntas[_perguntaSelecionada]['texto'].toString()),
-                  ...respostas
-                      .map((text) => Resposta(text, _responder))
-                      .toList(),
-                ],
-              )
+            ? Questionario(
+                _perguntas, _perguntaSelecionada, respostas, _responder)
             : Resultado(),
       ),
     );
