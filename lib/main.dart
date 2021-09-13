@@ -73,6 +73,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false, //tirar a faixa de debug do canto
       home: Scaffold(
         appBar: AppBar(
           title: Text('Perguntas'),
